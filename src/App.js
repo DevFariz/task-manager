@@ -3,6 +3,7 @@ import Aside from './components/aside/Aside';
 import "./App.css"
 import Search from './components/search/Search';
 import Filter from './components/filter/Filter';
+import TaskItems from './components/taskItems/TaskItems';
 
 class App extends Component {
     render() {
@@ -14,6 +15,7 @@ class App extends Component {
                 <main className="main">
                     <Search />
                     <Filter />
+                    <TaskItems />
                 </main>
             </div>
         );
