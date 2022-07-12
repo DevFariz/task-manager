@@ -7,7 +7,20 @@ import TaskItems from "./components/taskItems/TaskItems";
 import CreateTask from "./components/createTask/CreateTask";
 
 class App extends Component {
+  state = {
+    isPopupOpen: true,
+  };
+
+  togglePopup = () => {
+    this.setState({
+      isPopupOpen: !this.state.isPopupOpen
+    })
+  };
+
+
   render() {
+    const { isPopupOpen } = this.state;
+
     return (
       <>
         <div className="container">
@@ -15,14 +28,16 @@ class App extends Component {
             <Aside />
           </aside>
           <main className="main">
-            <Search />
+            <Search openPopup={this.togglePopup}/>
             <Filter />
             <TaskItems />
           </main>
         </div>
-        <div className="popup">
-            <CreateTask />
-        </div>
+        {isPopupOpen ? (
+          <div className="popup">
+            <CreateTask closePopup={this.togglePopup} />
+          </div>
+        ) : null}
       </>
     );
   }

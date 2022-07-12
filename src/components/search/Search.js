@@ -3,6 +3,11 @@ import {IoSearchOutline} from "react-icons/io5"
 import "./Search.css"
 
 export default class Search extends Component {
+
+  openPopup = () => {
+    this.props.openPopup();
+  }
+
   render() {
     return (
       <div className='search-create'>
@@ -10,7 +15,7 @@ export default class Search extends Component {
           <button className='search__submit'><IoSearchOutline  /></button>
           <input className='search__input' type="text" placeholder='Search Categories'/>
         </div>
-        <button className='create__btn'>Create</button>
+        <button onClick={this.openPopup} className='create__btn'>Create</button>
       </div>
     )
   }

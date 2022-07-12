@@ -3,6 +3,10 @@ import "./CreateTask.css";
 import { GrClose } from "react-icons/gr";
 
 class CreateTask extends Component {
+  closePopup = () => {
+    this.props.closePopup();
+  };
+
   render() {
     return (
       <form className="create-task">
@@ -16,7 +20,12 @@ class CreateTask extends Component {
           <label htmlFor="task-desc" className="task-label">
             Description:
           </label>
-          <textarea rows={4} type="text" id="task-desc" className="create-task__inp" />
+          <textarea
+            rows={4}
+            type="text"
+            id="task-desc"
+            className="create-task__inp"
+          />
         </div>
         <h5 className="task-item__list-title">List</h5>
         <div className="add-task">
@@ -28,8 +37,14 @@ class CreateTask extends Component {
           <input type="text" className="create-task__inp" />
           <button className="create-new__item">+</button>
         </div>
-        <button className="submit-task" type="button">Submit Task</button>
-        <button className="create-task__close" type="button">
+        <button className="submit-task" type="button">
+          Submit Task
+        </button>
+        <button
+          onClick={this.closePopup}
+          className="create-task__close"
+          type="button"
+        >
           <GrClose />
         </button>
       </form>

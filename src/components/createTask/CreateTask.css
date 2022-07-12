@@ -19,9 +19,10 @@
     justify-content: center;
     align-items: center;
     font-size: 24px;
+    border: none;
     border-radius: 50%;
     cursor: pointer;
-    background-color: rgb(131, 119, 119);
+    background: transparent;
 }
 
 .add-task, .add-keywords{
