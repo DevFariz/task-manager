@@ -18,11 +18,11 @@
 
 
 .task-state_draft{
-    background-color: gray;
+    background-color: rgb(172, 172, 172);
 }
 
 .task-state_completed{
-    background-color: rgb(15, 150, 15);
+    background-color: rgb(24, 177, 24);
 }
 
 .task-state__btns{
