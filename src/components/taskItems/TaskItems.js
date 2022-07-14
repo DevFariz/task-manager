@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import TaskItem from '../taskItem/TaskItem';
-import "./TaskItems.css"
+import React from "react";
+import TaskItem from "../taskItem/TaskItem";
+import "./TaskItems.css";
 
+const TaskItems = () => {
 
-export default class TaskItems extends Component {
+  const tasks = JSON.parse(localStorage.tasks);
 
-  render() {
-    return (
-      <div className='task-items'>
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-      </div>
-    )
-  }
-}
+  return (
+    <div className="task-items">
+      {tasks.map((item, i) => (
+        <TaskItem key={i} {...item}/>
+      ))}
+    </div>
+  );
+};
+
+export default TaskItems;
