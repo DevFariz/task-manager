@@ -42,7 +42,7 @@ export default class TaskItem extends Component {
         <h3 className="task-item__title">{this.props.title}</h3>
         <p className="task-item__date">{this.props.date}</p>
         <p className="task-item__desc">{this.props.desc}</p>
-        <List data={this.props.list}/>
+        <List list={this.props.list}/>
         <Keywords />
       </div>
     )

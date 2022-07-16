@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./CreateTask.css";
 import { GrClose } from "react-icons/gr";
 
@@ -7,14 +7,14 @@ const CreateTask = (props) => {
   const [desc, setDesc] = useState("");
   const [list, setList] = useState([""]);
   const [keyword, setKeyword] = useState([""]);
-
-  const listInput = useRef();
+  const [listInput, setListInput] = useState("");
+  // const listInput = useRef();
 
   const tasks = JSON.parse(localStorage.tasks);
 
   const addTask = () => {
     const temp = [...list];
-    temp.push(listInput.current.value);
+    temp.push(listInput);
     setList(temp);
   };
 
@@ -38,6 +38,7 @@ const CreateTask = (props) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    const temp = [...list, listInput];
     const date = new Date();
     const monthNames = [
       "January",
@@ -70,10 +71,11 @@ const CreateTask = (props) => {
       date: `${monthNames[date.getMonth()]} ${date.getDate()},  ${date.getFullYear()} ${formatAMPM(date)}`,
       title,
       desc,
-      list,
+      list: temp.slice(1),
       keyword,
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
+
     closePopup();
   };
 
@@ -109,12 +111,15 @@ const CreateTask = (props) => {
       <h5 className="task-item__list-title">List</h5>
       {list.map((item, i) => (
         <div key={item} className="add-task">
+
           <input
-            ref={listInput}
+            // ref={listInput}
+            onChange={(e) => {setListInput(e.target.value)}}
             type="text"
             className="create-task__inp"
             readOnly={i !== list.length - 1}
           />
+
           {i === list.length - 1 ? (
             <button
               className="create-new__item"
